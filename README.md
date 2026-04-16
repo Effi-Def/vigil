@@ -3,7 +3,7 @@
 
 Open source disaster and extreme weather monitoring platform for Italy — war-room UI, real-time data, operational awareness.
 
-[![CI](https://github.com/Utente/vigil/actions/workflows/ci.yml/badge.svg)](https://github.com/Utente/vigil/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg) ![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg) ![React 18](https://img.shields.io/badge/React-18-61DAFB.svg)
+[![CI](https://github.com/Effi-Def/vigil/actions/workflows/ci.yml/badge.svg)](https://github.com/Effi-Def/vigil/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg) ![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg) ![React 18](https://img.shields.io/badge/React-18-61DAFB.svg)
 
 ![INGV](https://img.shields.io/badge/Data%20source-INGV-0A6EBD.svg) ![ARPA](https://img.shields.io/badge/Data%20source-ARPA-2D8A34.svg) ![Open-Meteo](https://img.shields.io/badge/Data%20source-Open--Meteo-0077B6.svg) ![Meteoalarm](https://img.shields.io/badge/Data%20source-Meteoalarm-E07A00.svg)
 
@@ -62,7 +62,7 @@ External sources -> Collectors (Python) -> Scheduler
 ### Quick start (Docker)
 
 ```bash
-git clone https://github.com/USERNAME/vigil
+git clone https://github.com/Effi-Def/vigil
 cd vigil
 cp .env.example .env
 docker compose up
