@@ -1,0 +1,13 @@
+[Unit]
+Description=Backup Vigil SQLite database
+After=network.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+Group=ubuntu
+Environment=APP_DIR=/home/ubuntu/vigil-backend
+Environment=DB_PATH=/home/ubuntu/vigil-backend/vigil.db
+Environment=BACKUP_DIR=/var/backups/vigil
+Environment=BACKUP_KEEP_DAYS=14
+ExecStart=/usr/local/bin/backup_vigil_db.sh

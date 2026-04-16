@@ -1,0 +1,23 @@
+[Unit]
+Description=Vigil FastAPI service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/vigil-backend
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/home/ubuntu/vigil-backend/.env
+# Single worker avoids duplicate APScheduler instances in-process.
+ExecStart=/home/ubuntu/vigil-backend/venv/bin/python -m uvicorn main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=*
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGINT
+StandardOutput=append:/var/log/vigil/app.log
+StandardError=append:/var/log/vigil/app.log
+
+[Install]
+WantedBy=multi-user.target

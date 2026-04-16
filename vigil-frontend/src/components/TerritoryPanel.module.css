@@ -1,0 +1,26 @@
+.panel { display: flex; flex-direction: column; height: 100%; background: #0d1117; border-left: 1px solid #21262d; overflow: hidden; }
+.header { padding: 12px; border-bottom: 1px solid #21262d; }
+.title { font-family: var(--fm); font-size: 11px; letter-spacing: .12em; color: #58a6ff; font-weight: 700; }
+.sub { font-size: 11px; color: #8b949e; margin-top: 4px; }
+.loading { padding: 8px 12px; font-size: 10px; color: #58a6ff; }
+.note { padding: 0 12px 10px; font-size: 10px; color: #8b949e; line-height: 1.45; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; }
+.card { border: 1px solid #21262d; border-radius: 6px; padding: 8px; background: #111826; display: flex; flex-direction: column; gap: 4px; }
+.card span { font-size: 10px; color: #8b949e; }
+.card strong { font-size: 13px; color: #e6edf3; }
+.section { padding: 10px 12px; border-top: 1px solid #21262d; }
+.sectionTitle { font-family: var(--fm); font-size: 10px; color: #c9d1d9; margin-bottom: 8px; letter-spacing: .05em; }
+.hydroRow { display: flex; gap: 6px; flex-wrap: wrap; }
+.pillHigh, .pillMid, .pillOk { font-family: var(--fm); font-size: 10px; padding: 3px 7px; border-radius: 999px; border: 1px solid transparent; }
+.pillHigh { color: #f85149; border-color: #f8514955; background: #f8514920; }
+.pillMid { color: #d29922; border-color: #d2992255; background: #d2992220; }
+.pillOk { color: #3fb950; border-color: #3fb95055; background: #3fb95020; }
+.list { display: flex; flex-direction: column; gap: 6px; max-height: 140px; overflow: auto; }
+.row { border: 1px solid #21262d; border-radius: 6px; padding: 6px 8px; background: #0f1622; }
+.rowTitle { font-size: 11px; color: #e6edf3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rowMeta { font-size: 10px; color: #8b949e; margin-top: 2px; }
+.listSmall { display: flex; flex-direction: column; gap: 5px; max-height: 180px; overflow: auto; }
+.stationRow { display: flex; flex-direction: column; gap: 3px; border-bottom: 1px solid #1f2937; padding: 5px 0; font-size: 10px; color: #c9d1d9; }
+.stationTop { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.stationMeta { color: #8b949e; font-size: 10px; }
+.empty { font-size: 10px; color: #8b949e; padding: 6px 0; }

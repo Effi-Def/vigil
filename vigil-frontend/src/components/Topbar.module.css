@@ -1,0 +1,72 @@
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: #161b22; border-bottom: 1px solid #21262d;
+  height: 36px; flex-shrink: 0;
+}
+.left { display: flex; align-items: center; }
+.logo {
+  font-family: var(--fm); font-size: 13px; font-weight: 700; letter-spacing: .12em;
+  color: #58a6ff; margin-right: 12px;
+}
+.sep { width: 1px; height: 16px; background: #21262d; margin: 0 8px; }
+.navItem {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .07em;
+  padding: 0 11px; height: 36px; border: none; background: transparent;
+  color: #8b949e; border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.navItem:hover { color: #e6edf3; }
+.navOn { color: #e6edf3 !important; border-bottom-color: #58a6ff !important; }
+.right { display: flex; align-items: center; gap: 10px; }
+.modeSwitch { display: inline-flex; border: 1px solid #30363d; border-radius: 5px; overflow: hidden; }
+.modeBtn { font-family: var(--fm); font-size: 10px; padding: 3px 8px; border: 0; background: #0d1117; color: #8b949e; }
+.modeBtn + .modeBtn { border-left: 1px solid #30363d; }
+.modeOn { color: #58a6ff; background: #58a6ff1a; }
+.evCount { font-family: var(--fm); font-size: 10px; color: #8b949e; }
+.stalePill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vwarn) 42%, transparent);
+  background: color-mix(in srgb, var(--vwarn) 14%, transparent);
+  color: var(--vwarn);
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.timelineRangePill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #3fb950;
+  background: #0d2e1b;
+  color: #3fb950;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.audioToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8b949e;
+  font-family: var(--fm);
+  font-size: 10px;
+  user-select: none;
+}
+.audioToggle input { accent-color: #58a6ff; }
+.livePill {
+  display: flex; align-items: center; gap: 5px;
+  background: #0d4429; color: #3fb950; border: 1px solid #238636;
+  border-radius: 4px; padding: 2px 9px;
+  font-family: var(--fm); font-size: 10px; letter-spacing: .05em;
+}
+.liveDot {
+  width: 5px; height: 5px; border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }

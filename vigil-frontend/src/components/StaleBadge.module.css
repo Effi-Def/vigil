@@ -1,0 +1,57 @@
+.staleBadge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: color-mix(in srgb, var(--vwarn) 18%, transparent);
+  color: var(--vwarn);
+  border: 1px solid color-mix(in srgb, var(--vwarn) 40%, transparent);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.staleBadgeAged {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: color-mix(in srgb, #b5651d 22%, transparent);
+  color: #d37a2a;
+  border: 1px solid color-mix(in srgb, #d37a2a 45%, transparent);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.staleBadgeVery {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: color-mix(in srgb, #8f1d1d 24%, transparent);
+  color: #e25b5b;
+  border: 1px solid color-mix(in srgb, #e25b5b 48%, transparent);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.freshLabel {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--vmuted);
+  cursor: default;
+  white-space: nowrap;
+}

@@ -1,0 +1,45 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid;
+  font-family: var(--fm);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.sizeMd {
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+/* estimated — ambra/warning */
+.estimated {
+  background: color-mix(in srgb, var(--vwarn) 14%, transparent);
+  color: var(--vwarn);
+  border-color: color-mix(in srgb, var(--vwarn) 45%, transparent);
+  border-style: solid;
+}
+
+/* synthetic — danger, bordo tratteggiato */
+.synthetic {
+  background: color-mix(in srgb, var(--vdanger) 10%, transparent);
+  color: var(--vdanger);
+  border-color: color-mix(in srgb, var(--vdanger) 45%, transparent);
+  border-style: dashed;
+}
+
+/* unknown — grigio neutro */
+.unknown {
+  background: color-mix(in srgb, var(--vmuted) 10%, transparent);
+  color: var(--vmuted);
+  border-color: color-mix(in srgb, var(--vmuted) 35%, transparent);
+  border-style: solid;
+}

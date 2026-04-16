@@ -1,0 +1,46 @@
+.appShell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 320px at 50% -10%, rgba(88, 166, 255, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0.98), rgba(13, 17, 23, 1));
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: minmax(290px, 320px) minmax(0, 1fr) minmax(320px, 360px);
+  gap: 12px;
+  padding: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panelFrame {
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(48, 54, 61, 0.92);
+  border-radius: 14px;
+  background: rgba(13, 17, 23, 0.92);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+.mapFrame {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(48, 54, 61, 0.92);
+  border-radius: 16px;
+  background: rgba(13, 17, 23, 0.96);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+@media (max-width: 1480px) {
+  .mainGrid {
+    grid-template-columns: 280px minmax(0, 1fr) 330px;
+    gap: 10px;
+    padding: 10px;
+  }
+}

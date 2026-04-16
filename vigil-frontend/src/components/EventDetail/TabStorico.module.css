@@ -1,0 +1,26 @@
+.root { display: flex; flex-direction: column; gap: 12px; }
+.sectionHead { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #e6edf3; font-weight: 600; }
+.metricGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.metricCard { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 8px; min-height: 68px; }
+.metricLabel { font-size: 11px; color: #8b949e; margin-bottom: 6px; }
+.metricVal { font-family: var(--fm); font-size: 14px; color: #e6edf3; display: flex; align-items: baseline; gap: 2px; }
+.delta { display: inline-block; margin-top: 6px; font-family: var(--fm); font-size: 11px; border: 1px solid; border-radius: 999px; padding: 2px 7px; }
+.compBlock { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 8px; }
+.compTitle { font-size: 11px; color: #e6edf3; margin-bottom: 8px; font-weight: 600; }
+.compRow { display: grid; grid-template-columns: 58px 1fr 68px; align-items: center; gap: 8px; margin-bottom: 6px; }
+.compLabel { font-size: 11px; color: #8b949e; }
+.compTrack { height: 10px; background: #0d1117; border: 1px solid #21262d; border-radius: 999px; overflow: hidden; }
+.compBar { height: 100%; }
+.compVal { font-family: var(--fm); font-size: 11px; color: #e6edf3; text-align: right; }
+.note { font-size: 11px; color: #8b949e; }
+.stationCard { background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.stationLine { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: #8b949e; }
+.stationLine strong { font-family: var(--fm); color: #e6edf3; font-weight: 500; }
+.stationSource { margin-top: 2px; font-size: 11px; color: #8b949e; }
+.muted { font-size: 11px; color: #8b949e; text-align: center; padding: 14px 0; }
+.skeletonRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.skeletonCard { background: linear-gradient(90deg, #161b22 0%, #1f2630 50%, #161b22 100%); background-size: 200% 100%; border: 1px solid #21262d; border-radius: 6px; height: 68px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@media (max-width: 1200px) {
+  .metricGrid { grid-template-columns: repeat(2, 1fr); }
+}

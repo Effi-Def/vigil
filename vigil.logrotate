@@ -1,0 +1,10 @@
+/var/log/vigil/*.log {
+  daily
+  rotate 14
+  compress
+  delaycompress
+  missingok
+  notifempty
+  copytruncate
+  su ubuntu ubuntu
+}

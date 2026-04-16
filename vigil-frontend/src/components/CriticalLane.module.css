@@ -1,0 +1,157 @@
+.lane {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  flex-shrink: 0;
+  width: 100%;
+  background: color-mix(in srgb, var(--vdanger) 10%, var(--vsurf));
+  border-bottom: 1px solid color-mix(in srgb, var(--vdanger) 35%, transparent);
+  padding: 0 12px;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* ── Count pill ── */
+.count {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.countNum {
+  font-family: var(--fm);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--vdanger);
+  line-height: 1;
+}
+.countLabel {
+  font-family: var(--fm);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--vdanger) 70%, var(--vtext));
+}
+
+.freshPill {
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-family: var(--fm);
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.freshPillOn {
+  color: var(--vok);
+  background: color-mix(in srgb, var(--vok) 14%, transparent);
+  border-color: color-mix(in srgb, var(--vok) 40%, transparent);
+}
+
+.freshPillOff {
+  color: var(--vmuted);
+  background: color-mix(in srgb, var(--vmuted) 8%, transparent);
+  border-color: color-mix(in srgb, var(--vmuted) 28%, transparent);
+}
+
+/* ── Separator ── */
+.sep {
+  width: 1px;
+  height: 22px;
+  background: color-mix(in srgb, var(--vdanger) 30%, transparent);
+  flex-shrink: 0;
+}
+
+/* ── Scrollable list ── */
+.list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  flex: 1;
+  min-width: 0;
+  scrollbar-width: none;
+}
+.list::-webkit-scrollbar { display: none; }
+
+/* ── Event item button ── */
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--vdanger) 25%, transparent);
+  background: color-mix(in srgb, var(--vdanger) 6%, transparent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.13s;
+}
+.item:hover {
+  background: color-mix(in srgb, var(--vdanger) 14%, transparent);
+}
+
+.icon {
+  font-size: 13px;
+  line-height: 1;
+}
+.title {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--vtext);
+  font-weight: 600;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.area {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--vmuted);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Show all button ── */
+.showAll {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--vdanger) 45%, transparent);
+  background: transparent;
+  color: var(--vdanger);
+  font-family: var(--fm);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.13s;
+  white-space: nowrap;
+}
+.showAll:hover {
+  background: color-mix(in srgb, var(--vdanger) 12%, transparent);
+}
+
+/* ── Out of range note ── */
+.outOfRangeNote {
+  position: absolute;
+  bottom: -22px;
+  left: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  background: color-mix(in srgb, var(--vwarn) 14%, var(--vsurf));
+  border: 1px solid color-mix(in srgb, var(--vwarn) 35%, transparent);
+  border-radius: 3px;
+  font-family: var(--fm);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--vwarn) 85%, var(--vtext));
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+}

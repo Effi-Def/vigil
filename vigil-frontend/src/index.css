@@ -1,0 +1,41 @@
+:root {
+  --vbg: #0d1117;
+  --vsurf: #161b22;
+  --vsurf2: #1c2230;
+  --vborder: #21262d;
+  --vhi: rgba(255,255,255,0.09);
+  --vtext: #e6edf3;
+  --vmuted: #8b949e;
+  --vacc: #58a6ff;
+  --vdanger: #f85149;
+  --vwarn: #d29922;
+  --vok: #3fb950;
+  --vteal: #39d353;
+  --color-text-danger: var(--vdanger);
+  --color-background-danger: color-mix(in srgb, var(--vdanger) 14%, transparent);
+  --color-text-warning: var(--vwarn);
+  --color-background-warning: color-mix(in srgb, var(--vwarn) 14%, transparent);
+  --color-text-info: var(--vacc);
+  --color-background-info: color-mix(in srgb, var(--vacc) 14%, transparent);
+  --color-text-tertiary: var(--vmuted);
+  --color-background-secondary: color-mix(in srgb, var(--vmuted) 12%, transparent);
+  --color-text-success: var(--vok);
+  --color-background-success: color-mix(in srgb, var(--vok) 14%, transparent);
+  --fh: 'Syne', sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--vbg);
+  color: var(--vtext);
+  font-family: var(--fh);
+}
+
+button { font-family: var(--fh); cursor: pointer; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--vborder); border-radius: 2px; }

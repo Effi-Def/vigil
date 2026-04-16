@@ -1,0 +1,202 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-secondary, #0d1117);
+  border-bottom: 1px solid var(--border-color, #30363d);
+  border-radius: 4px;
+}
+
+.presetsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.preset {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border-color, #30363d);
+  background: var(--bg-primary, #0d1117);
+  color: var(--text-secondary, #8b949e);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+
+.preset:hover {
+  border-color: var(--text-secondary, #8b949e);
+  color: var(--text-primary, #c9d1d9);
+}
+
+.preset.active {
+  background: var(--accent-blue, #1f6feb);
+  border-color: var(--accent-blue, #1f6feb);
+  color: white;
+}
+
+.preset.highlight {
+  font-weight: 600;
+}
+
+.advancedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-primary, #0d1117);
+  border: 1px solid var(--border-color, #30363d);
+  border-radius: 4px;
+  animation: slideDown 200ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sliderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sliderLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary, #8b949e);
+  gap: 6px;
+}
+
+.dateDisplay {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary, #c9d1d9);
+  font-family: monospace;
+  background: var(--bg-secondary, #0d1117);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-color, #30363d);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-blue, #1f6feb);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: var(--accent-blue-light, #388bfd);
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-blue, #1f6feb);
+  cursor: pointer;
+  border: none;
+  transition: background 150ms ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  background: var(--accent-blue-light, #388bfd);
+}
+
+.rangeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-secondary, #8b949e);
+  background: var(--bg-secondary, #0d1117);
+  padding: 8px;
+  border-radius: 3px;
+  border-left: 3px solid var(--accent-blue, #1f6feb);
+}
+
+.duration {
+  font-size: 11px;
+  color: var(--text-tertiary, #6e7681);
+  margin-left: 4px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btnApply,
+.btnCancel {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+}
+
+.btnApply {
+  background: var(--accent-green, #238636);
+  color: white;
+  border-color: var(--accent-green, #238636);
+}
+
+.btnApply:hover {
+  background: var(--accent-green-light, #2ea043);
+  border-color: var(--accent-green-light, #2ea043);
+}
+
+.btnCancel {
+  background: transparent;
+  color: var(--text-secondary, #8b949e);
+  border-color: var(--border-color, #30363d);
+}
+
+.btnCancel:hover {
+  color: var(--text-primary, #c9d1d9);
+  border-color: var(--text-secondary, #8b949e);
+}
+
+@media (max-width: 768px) {
+  .presetsRow {
+    gap: 6px;
+  }
+
+  .preset {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .advancedPanel {
+    padding: 10px;
+  }
+}

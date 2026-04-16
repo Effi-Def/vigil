@@ -1,0 +1,133 @@
+.ribbonShell {
+  position: relative;
+}
+
+.ribbon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Dot wrapper (positioning context for popover) ── */
+.dotWrap {
+  position: relative;
+}
+
+/* ── Dot button ── */
+.dot {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  transition: opacity 0.15s;
+  background: transparent;
+}
+.dot:hover { opacity: 0.8; }
+
+.dotIndicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Label hidden on narrow screens */
+.dotLabel {
+  display: none;
+}
+@media (min-width: 768px) {
+  .dotLabel { display: inline; }
+}
+
+/* ── Status variants (mapping to existing CSS vars) ── */
+.dot_ok {
+  background: color-mix(in srgb, var(--vok) 12%, transparent);
+  color: var(--vok);
+  border-color: color-mix(in srgb, var(--vok) 35%, transparent);
+}
+.dot_ok .dotIndicator { background: var(--vok); }
+
+.dot_stale {
+  background: color-mix(in srgb, var(--vwarn) 12%, transparent);
+  color: var(--vwarn);
+  border-color: color-mix(in srgb, var(--vwarn) 35%, transparent);
+}
+.dot_stale .dotIndicator { background: var(--vwarn); }
+
+.dot_down {
+  background: color-mix(in srgb, var(--vdanger) 12%, transparent);
+  color: var(--vdanger);
+  border-color: color-mix(in srgb, var(--vdanger) 35%, transparent);
+}
+.dot_down .dotIndicator { background: var(--vdanger); }
+
+.dot_unknown {
+  background: transparent;
+  color: var(--vmuted);
+  border-color: var(--vborder);
+}
+.dot_unknown .dotIndicator { background: var(--vmuted); }
+
+/* ── Popover ── */
+.popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: var(--popover-left, 0px);
+  z-index: 200;
+  min-width: 280px;
+  max-width: min(360px, calc(100vw - 24px));
+  background: var(--vsurf2);
+  border: 1px solid var(--vborder);
+  border-radius: 6px;
+  padding: 10px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.popoverSource {
+  font-family: var(--fh);
+  font-size: 12px;
+  color: var(--vtext);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.popoverStatus {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  border-radius: 3px;
+  padding: 3px 6px;
+  margin-bottom: 8px;
+}
+.popoverStatus_ok      { background: color-mix(in srgb, var(--vok)     12%, transparent); color: var(--vok); }
+.popoverStatus_stale   { background: color-mix(in srgb, var(--vwarn)   12%, transparent); color: var(--vwarn); }
+.popoverStatus_down    { background: color-mix(in srgb, var(--vdanger) 12%, transparent); color: var(--vdanger); }
+.popoverStatus_unknown { background: color-mix(in srgb, var(--vmuted)  12%, transparent); color: var(--vmuted); }
+
+.popoverRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+  font-family: var(--fm);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.popoverKey { color: var(--vmuted); flex-shrink: 0; }
+.popoverVal { color: var(--vtext); text-align: right; word-break: break-all; }
+
+@media (max-width: 767px) {
+  .popover {
+    left: 0;
+    right: 0;
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+}
