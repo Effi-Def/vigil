@@ -33,6 +33,7 @@ def _run_migrations():
     new_columns = [
         ("events", "temp_c", "REAL"),
         ("events", "precipitation_mm", "REAL"),
+        ("events", "last_meteo_enriched", "DATETIME"),
         ("events", "category", "TEXT"),
         ("events", "is_alert", "BOOLEAN DEFAULT 0"),
         ("events", "parent_event_id", "TEXT"),

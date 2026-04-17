@@ -81,6 +81,10 @@ export function useVigil() {
   const selectedEvent = events.find(e => e.id === selectedId) || null
   const wsRef = useRef(null)
   const reconnectRef = useRef(null)
+  const fallbackPollRef = useRef(null)
+  const wsAttemptsRef = useRef(0)
+  const wsConnectedRef = useRef(false)
+  const unmountedRef = useRef(false)
   const mediaStatsRef = useRef(new Map())
   const mediaCacheRef = useRef(new Map())
   const newsCacheRef = useRef(new Map())
@@ -93,16 +97,40 @@ export function useVigil() {
     return enrichEventsWithMediaStats(incomingEvents, mediaStatsRef.current)
   }, [])
 
-  const loadEventsHttp = useCallback(async () => {
+  const clearFallbackPolling = useCallback(() => {
+    if (fallbackPollRef.current) {
+      clearInterval(fallbackPollRef.current)
+      fallbackPollRef.current = null
+    }
+  }, [])
+
+  const fetchEvents = useCallback(async () => {
+    const rows = await apiFetch('/events')
+    setEvents(applyMediaStats(rows || []))
+  }, [applyMediaStats])
+
+  const runFallbackPoll = useCallback(async () => {
     if (USE_MOCK) return
     try {
-      const rows = await apiFetch('/events')
-      setEvents(applyMediaStats(rows || []))
-      setStatus('live')
+      await fetchEvents()
+      if (!wsConnectedRef.current) setStatus('polling')
     } catch {
-      // Leave previous state; WS may still reconnect.
+      if (!wsConnectedRef.current) setStatus('offline')
     }
-  }, [applyMediaStats])
+  }, [fetchEvents])
+
+  const ensureFallbackPolling = useCallback(() => {
+    if (USE_MOCK || fallbackPollRef.current) return
+    runFallbackPoll()
+    fallbackPollRef.current = setInterval(runFallbackPoll, 30_000)
+  }, [runFallbackPoll])
+
+  const nextReconnectDelayMs = useCallback(() => {
+    wsAttemptsRef.current += 1
+    if (wsAttemptsRef.current === 1) return 3000
+    if (wsAttemptsRef.current === 2) return 6000
+    return 15000
+  }, [])
 
   const loadMediaRichTopItaly = useCallback(async () => {
     if (USE_MOCK) return
@@ -115,8 +143,6 @@ export function useVigil() {
       }
       mediaStatsRef.current = nextMap
       setEvents(prev => applyMediaStats(prev))
-      // If HTTP API is healthy, do not show false offline state.
-      setStatus('live')
     } catch {
       // Keep UI functional even if ranking endpoint is temporarily unavailable.
     }
@@ -125,13 +151,17 @@ export function useVigil() {
   // ── WebSocket for real-time events ──────────────────────────────────────────
   const connectWS = useCallback(() => {
     if (USE_MOCK || !USE_WS) return
+    if (unmountedRef.current) return
     if (wsRef.current && wsRef.current.readyState < 2) return // already open/connecting
 
     const ws = new WebSocket(WS_URL)
     wsRef.current = ws
 
     ws.onopen = () => {
+      wsConnectedRef.current = true
+      wsAttemptsRef.current = 0
       setStatus('live')
+      clearFallbackPolling()
       if (reconnectRef.current) {
         clearTimeout(reconnectRef.current)
         reconnectRef.current = null
@@ -151,34 +181,43 @@ export function useVigil() {
     }
 
     ws.onerror = () => {
-      setStatus('connecting')
+      if (!wsConnectedRef.current) setStatus('polling')
     }
 
     ws.onclose = () => {
-      setStatus('connecting')
-      // Auto-reconnect after 5s
-      reconnectRef.current = setTimeout(connectWS, 5000)
+      wsConnectedRef.current = false
+      if (unmountedRef.current) return
+      ensureFallbackPolling()
+      setStatus('polling')
+      const delayMs = nextReconnectDelayMs()
+      reconnectRef.current = setTimeout(connectWS, delayMs)
     }
-  }, [applyMediaStats])
+  }, [applyMediaStats, clearFallbackPolling, ensureFallbackPolling, nextReconnectDelayMs])
 
   useEffect(() => {
+    unmountedRef.current = false
     if (USE_MOCK) {
       setEvents(MOCK_EVENTS)
       setStatus('mock')
       return
     }
     loadMediaRichTopItaly()
-    loadEventsHttp()
-    if (USE_WS) connectWS()
+    if (USE_WS) {
+      ensureFallbackPolling()
+      connectWS()
+    } else {
+      setStatus('polling')
+      ensureFallbackPolling()
+    }
     const t = setInterval(loadMediaRichTopItaly, 90_000)
-    const poll = setInterval(loadEventsHttp, 12_000)
     return () => {
+      unmountedRef.current = true
       clearInterval(t)
-      clearInterval(poll)
+      clearFallbackPolling()
       if (reconnectRef.current) clearTimeout(reconnectRef.current)
       if (wsRef.current) wsRef.current.close()
     }
-  }, [connectWS, loadMediaRichTopItaly, loadEventsHttp])
+  }, [connectWS, loadMediaRichTopItaly, ensureFallbackPolling, clearFallbackPolling])
 
   useEffect(() => {
     if (!events.length) return

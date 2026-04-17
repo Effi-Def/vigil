@@ -1,10 +1,11 @@
 import styles from './Topbar.module.css'
 import HealthRibbon from './HealthRibbon'
 
-const STATUS_DOT = { live: '#3fb950', offline: '#f85149', mock: '#d29922', connecting: '#8b949e' }
-const STATUS_LABEL = { live: 'LIVE', offline: 'OFFLINE', mock: 'MOCK', connecting: 'CONNESSIONE' }
+const STATUS_DOT = { live: '#3fb950', polling: '#d29922', offline: '#f85149', mock: '#d29922', connecting: '#8b949e' }
+const STATUS_LABEL = { live: 'LIVE', polling: 'POLLING', offline: 'OFFLINE', mock: 'MOCK', connecting: 'CONNESSIONE' }
 const STATUS_PILL_STYLE = {
   live: { background: '#0d4429', color: '#3fb950', borderColor: '#238636' },
+  polling: { background: '#3d2f00', color: '#d29922', borderColor: '#9e6a03' },
   offline: { background: '#3b1217', color: '#f85149', borderColor: '#da3633' },
   mock: { background: '#3d2f00', color: '#d29922', borderColor: '#9e6a03' },
   connecting: { background: '#161b22', color: '#8b949e', borderColor: '#30363d' },

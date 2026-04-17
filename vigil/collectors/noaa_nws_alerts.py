@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from typing import Optional
 
 import httpx
+from sqlalchemy.dialects.sqlite import insert
 from sqlalchemy.orm import Session
 
 from vigil.core.categories import EventCategory
@@ -155,12 +156,15 @@ def _parse_features(data: dict) -> list[dict]:
 
 def _upsert_event(db: Session, data: dict) -> None:
     payload = {k: v for k, v in data.items() if not k.startswith("_")}
-    event = db.query(Event).filter(Event.id == payload["id"]).first()
-    if event is None:
-        event = Event(**payload)
-        db.add(event)
+    stmt = insert(Event).values(**payload).on_conflict_do_nothing(index_elements=["id"])
+    result = db.execute(stmt)
+
+    if result.rowcount:
         logger.info(f"Nuova allerta NWS: {payload['id']} — {payload['title']}")
     else:
+        event = db.query(Event).filter(Event.id == payload["id"]).first()
+        if event is None:
+            return
         for k, v in payload.items():
             if k != "id" and v is not None:
                 setattr(event, k, v)

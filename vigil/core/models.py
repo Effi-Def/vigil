@@ -32,6 +32,7 @@ class Event(Base):
     pressure_hpa = Column(Integer, nullable=True)
     temp_c = Column(Float, nullable=True)
     precipitation_mm = Column(Float, nullable=True)
+    last_meteo_enriched = Column(DateTime, nullable=True)
     category: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
     is_alert: Mapped[bool | None] = mapped_column(default=False, nullable=True)
     started_at = Column(DateTime, nullable=True)
@@ -58,6 +59,7 @@ class Event(Base):
             "pressure_hpa": self.pressure_hpa,
             "temp_c": self.temp_c,
             "precipitation_mm": self.precipitation_mm,
+            "last_meteo_enriched": self.last_meteo_enriched.isoformat() if self.last_meteo_enriched else None,
             "category": self.category,
             "is_alert": bool(self.is_alert),
             "started_at": self.started_at.isoformat() if self.started_at else None,
